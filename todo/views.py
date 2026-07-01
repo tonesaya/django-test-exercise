@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils.timezone import make_aware
-from django.utils.dateparse import parce_datetime
+from django.utils.dateparse import parse_datetime
 from todo.models import Task
 
 # Create your views here.
@@ -14,8 +14,6 @@ def index(request):
         tasks = Task.objects.order_by('due_at')
     else:
         tasks = Task.objects.order_by('-posted_at')
-
-    tasks = Task.objects.all()
 
     context = {
         'tasks': tasks
